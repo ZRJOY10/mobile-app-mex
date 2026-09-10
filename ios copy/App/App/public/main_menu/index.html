@@ -114,34 +114,87 @@
 
   <header class="compras-head">
     <h1 class="compras-title">Comprar</h1>
+    <p class="compras-sub">Encuentra tus productos favoritos</p>
 
-    <div class="view-toggle" role="group" aria-label="Cambiar vista">
-      <button type="button" class="view-btn is-active" data-view="grid"
-              aria-pressed="true" title="Vista de cuadr&iacute;cula">
-        <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="0" y="0" width="7" height="7" rx="2"/><rect x="9" y="0" width="7" height="7" rx="2"/><rect x="0" y="9" width="7" height="7" rx="2"/><rect x="9" y="9" width="7" height="7" rx="2"/></svg>
-        <span class="visually-hidden">Cuadr&iacute;cula</span>
-      </button>
-      <button type="button" class="view-btn" data-view="list"
-              aria-pressed="false" title="Vista de lista">
-        <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="0" y="1" width="4.5" height="4.5" rx="1.4"/><rect x="6.5" y="2.4" width="9.5" height="1.8" rx="0.9"/><rect x="0" y="10.5" width="4.5" height="4.5" rx="1.4"/><rect x="6.5" y="11.9" width="9.5" height="1.8" rx="0.9"/></svg>
-        <span class="visually-hidden">Lista</span>
-      </button>
+    <div class="compras-tools">
+      <label class="search-box">
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="9" cy="9" r="6"></circle>
+          <line x1="13.5" y1="13.5" x2="17.5" y2="17.5"></line>
+        </svg>
+        <input type="search" id="compras-search" autocomplete="off"
+               placeholder="Buscar productos..." aria-label="Buscar productos">
+      </label>
+
+      <div class="filter-wrap">
+        <button type="button" class="filter-btn" id="compras-filter"
+                aria-expanded="false" aria-haspopup="true">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.6 4.2h14.8a.8.8 0 0 1 .62 1.31l-5.4 6.5a1.6 1.6 0 0 0-.37 1.02v2.9a.8.8 0 0 1-1.16.72l-2.1-1.05a.8.8 0 0 1-.44-.72v-1.85a1.6 1.6 0 0 0-.37-1.02l-5.4-6.5a.8.8 0 0 1 .62-1.31z"/></svg>
+          Filtros
+        </button>
+
+        <div class="filter-pop" id="filter-pop" hidden>
+          <p class="filter-pop-title">Ordenar por</p>
+
+          <button type="button" class="filter-opt is-sel" data-sort="default">
+            Relevancia <svg class="filter-opt-tick" viewBox="0 0 16 16" aria-hidden="true"><polyline points="3,8.5 6.5,12 13,4.5"></polyline></svg>
+          </button>
+          <button type="button" class="filter-opt" data-sort="price-asc">
+            Precio: menor a mayor <svg class="filter-opt-tick" viewBox="0 0 16 16" aria-hidden="true"><polyline points="3,8.5 6.5,12 13,4.5"></polyline></svg>
+          </button>
+          <button type="button" class="filter-opt" data-sort="price-desc">
+            Precio: mayor a menor <svg class="filter-opt-tick" viewBox="0 0 16 16" aria-hidden="true"><polyline points="3,8.5 6.5,12 13,4.5"></polyline></svg>
+          </button>
+
+          <div class="filter-sep"></div>
+
+          <label class="filter-check">
+            <input type="checkbox" id="filter-stock">
+            Solo disponibles
+          </label>
+        </div>
+      </div>
     </div>
   </header>
 
   <div id="compras-loader" class="iframe-loader">
-    <div class="sk-grid" aria-hidden="true">
-      <div class="sk-card"><span class="sk-img"></span><span class="sk-line"></span><span class="sk-line sk-short"></span><span class="sk-price"></span><span class="sk-btn"></span></div>
-      <div class="sk-card"><span class="sk-img"></span><span class="sk-line"></span><span class="sk-line sk-short"></span><span class="sk-price"></span><span class="sk-btn"></span></div>
-      <div class="sk-card"><span class="sk-img"></span><span class="sk-line"></span><span class="sk-line sk-short"></span><span class="sk-price"></span><span class="sk-btn"></span></div>
-      <div class="sk-card"><span class="sk-img"></span><span class="sk-line"></span><span class="sk-line sk-short"></span><span class="sk-price"></span><span class="sk-btn"></span></div>
-      <div class="sk-card"><span class="sk-img"></span><span class="sk-line"></span><span class="sk-line sk-short"></span><span class="sk-price"></span><span class="sk-btn"></span></div>
-      <div class="sk-card"><span class="sk-img"></span><span class="sk-line"></span><span class="sk-line sk-short"></span><span class="sk-price"></span><span class="sk-btn"></span></div>
-    </div>
+      <div class="sk-row">
+        <span class="sk-thumb"></span>
+        <div class="sk-col"><span class="sk-mid"></span><span class="sk-mid2"></span><span class="sk-mid3"></span></div>
+        <div class="sk-col"><span class="sk-ctl"></span><span class="sk-ctl2"></span></div>
+      </div>
+      <div class="sk-row">
+        <span class="sk-thumb"></span>
+        <div class="sk-col"><span class="sk-mid"></span><span class="sk-mid2"></span><span class="sk-mid3"></span></div>
+        <div class="sk-col"><span class="sk-ctl"></span><span class="sk-ctl2"></span></div>
+      </div>
+      <div class="sk-row">
+        <span class="sk-thumb"></span>
+        <div class="sk-col"><span class="sk-mid"></span><span class="sk-mid2"></span><span class="sk-mid3"></span></div>
+        <div class="sk-col"><span class="sk-ctl"></span><span class="sk-ctl2"></span></div>
+      </div>
+      <div class="sk-row">
+        <span class="sk-thumb"></span>
+        <div class="sk-col"><span class="sk-mid"></span><span class="sk-mid2"></span><span class="sk-mid3"></span></div>
+        <div class="sk-col"><span class="sk-ctl"></span><span class="sk-ctl2"></span></div>
+      </div>
+      <div class="sk-row">
+        <span class="sk-thumb"></span>
+        <div class="sk-col"><span class="sk-mid"></span><span class="sk-mid2"></span><span class="sk-mid3"></span></div>
+        <div class="sk-col"><span class="sk-ctl"></span><span class="sk-ctl2"></span></div>
+      </div>
     <p id="compras-loader-text">Cargando tienda...</p>
   </div>
 
   <div class="compras-frame-wrap">
+    <button type="button" class="cart-fab" id="cart-fab" aria-label="Ver carrito">
+      <span class="cart-fab-icon">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6V5a4 4 0 0 1 8 0v1h2.2a1 1 0 0 1 1 1.1l-1 9A2.5 2.5 0 0 1 13.7 18H6.3a2.5 2.5 0 0 1-2.5-2.2l-1-9A1 1 0 0 1 3.8 6H6zm2 0h4V5a2 2 0 1 0-4 0v1z"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </span>
+      <span class="cart-total" id="cart-total">$0.00</span>
+      <svg class="cart-fab-chev" viewBox="0 0 20 20" aria-hidden="true"><polyline points="7,4 13,10 7,16"></polyline></svg>
+    </button>
     <iframe
       id="shopify-frame"
       title="Tienda La Bodeguita"
@@ -178,7 +231,23 @@
           body {
             font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             -webkit-font-smoothing: antialiased;
-            padding: 14px 14px calc(56px + env(safe-area-inset-bottom, 0px));
+            padding: 14px 14px calc(62px + env(safe-area-inset-bottom, 0px));
+          }
+
+          .shopify-buy-frame--toggle {
+            display: none !important;
+          }
+
+          html, body {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+
+          html::-webkit-scrollbar,
+          body::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
           }
         </style>
       </head>
@@ -362,13 +431,16 @@
 
                     contents: {
                       button: false,
-                      buttonWithQuantity: true
+                      buttonWithQuantity: true,
+                      quantity: true,
+                      quantityIncrement: true,
+                      quantityDecrement: true
                     },
 
                     text: {
-                      button: 'Add to cart',
-                      outOfStock: 'Out of stock',
-                      unavailable: 'Out of stock'
+                      button: 'Agregar',
+                      outOfStock: 'Agotado',
+                      unavailable: 'Agotado'
                     },
 
                     googleFonts: [
@@ -589,147 +661,371 @@
           }
 
           var VIEW_CSS = [
-            '.shopify-buy__collection-products{padding-bottom:2px;}',
+            'html,body{background:transparent;}',
+            'body.sv-ui .shopify-buy__collection-products{display:block;margin:0;padding:0;}',
 
-            'body.sv-grid .shopify-buy__product{display:flex;flex-direction:column;',
-              'background-color:#ffffff;border:1px solid #ede8e2;border-radius:20px;',
-              'box-shadow:0 1px 2px rgba(16,24,40,.03),0 10px 22px -10px rgba(16,24,40,.14);',
-              'padding:8px 8px 10px;text-align:left;min-width:0;margin:0 0 10px 9px;',
-              'width:calc(50% - 9px);max-width:calc(50% - 9px);}',
-            'body.sv-grid .shopify-buy__product + .shopify-buy__product{margin-top:0;}',
+            'body.sv-ui .shopify-buy__product{position:relative;display:grid;',
+              'grid-template-columns:74px minmax(0,1fr) 104px;',
+              'grid-template-rows:auto auto auto auto;',
+              'column-gap:12px;row-gap:0;align-items:center;',
+              'width:100%;max-width:100%;min-width:0;margin:0 0 10px 0;padding:12px;',
+              'background-color:#ffffff;border:1px solid #f1f1f6;border-radius:18px;',
+              'box-shadow:0 1px 2px rgba(20,20,50,.04),0 6px 16px -10px rgba(20,20,50,.10);',
+              'text-align:left;}',
+            'body.sv-ui .shopify-buy__product + .shopify-buy__product{margin-top:0;}',
 
-            'body.sv-grid .shopify-buy__product-img-wrapper{position:relative;height:0;',
-              'padding-top:94%;overflow:hidden;border-radius:14px;',
-              'background-image:linear-gradient(155deg,#f8f5f0,#eee7de);}',
-            'body.sv-grid .shopify-buy__product__variant-img{position:absolute;left:0;top:0;',
-              'width:100%;height:100%;object-fit:cover;}',
+            'body.sv-ui .shopify-buy__product-img-wrapper{grid-column:1;grid-row:1 / span 4;',
+              'position:relative;width:74px;height:74px;padding-top:0;overflow:visible;',
+              'border-radius:13px;}',
+            'body.sv-ui .shopify-buy__product__variant-img{position:absolute;left:0;top:0;width:100%;',
+              'height:100%;object-fit:cover;border-radius:13px;background-color:#f4f4f8;}',
 
-            'body.sv-grid .shopify-buy__product__title{margin:11px 3px 0;height:33px;',
-              'font-size:12.5px;font-weight:600;line-height:1.32;color:#47506a;',
-              'display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;',
-              'overflow:hidden;}',
+            'body.sv-ui .shopify-buy__product__title{grid-column:2;grid-row:1;align-self:end;margin:0;',
+              'font-family:Inter,sans-serif;font-size:13.5px;font-weight:700;line-height:1.28;',
+              'letter-spacing:-.01em;color:#1b1464;height:35px;display:-webkit-box;',
+              '-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}',
 
-            'body.sv-grid .shopify-buy__product__price{margin:7px 3px 0;}',
-            'body.sv-grid .shopify-buy__btn-and-quantity{display:flex;align-items:stretch;',
-              'width:100%;height:40px;margin:11px 0 0;padding:0;}',
-            'body.sv-grid .shopify-buy__quantity-container{flex:0 0 40px;margin:0;}',
-            'body.sv-grid .shopify-buy__btn-wrapper{flex:1 1 auto;min-width:0;margin:0;}',
+            'body.sv-ui .sv-unit{grid-column:2;grid-row:2;margin:2px 0 0;font-family:Inter,sans-serif;',
+              'font-size:11.5px;font-weight:500;line-height:1.2;color:#9a9aae;}',
 
-            'body.sv-list .shopify-buy__collection-products{display:block;margin-left:0;}',
-            'body.sv-list .shopify-buy__product{display:grid;',
-              'grid-template-columns:66px minmax(0,1fr) 134px;grid-template-rows:auto auto;',
-              'column-gap:13px;align-items:center;width:100%;max-width:100%;min-width:0;',
-              'background-color:#ffffff;border:1px solid #ede8e2;border-radius:18px;',
-              'box-shadow:0 1px 2px rgba(16,24,40,.03),0 8px 18px -10px rgba(16,24,40,.12);',
-              'margin:0 0 9px 0;padding:11px;text-align:left;}',
-            'body.sv-list .shopify-buy__product + .shopify-buy__product{margin-top:0;}',
-            'body.sv-list .shopify-buy__product-img-wrapper{grid-column:1;grid-row:1 / span 2;',
-              'position:relative;padding-top:0;width:66px;height:66px;overflow:hidden;',
-              'border-radius:13px;background-image:linear-gradient(155deg,#f8f5f0,#eee7de);}',
-            'body.sv-list .shopify-buy__product__variant-img{position:absolute;left:0;top:0;',
-              'width:100%;height:100%;object-fit:cover;}',
-            'body.sv-list .shopify-buy__product__title{grid-column:2;grid-row:1;align-self:end;',
-              'margin:0;max-height:33px;font-size:12.5px;font-weight:600;line-height:1.32;',
-              'color:#47506a;display:-webkit-box;-webkit-line-clamp:2;',
-              '-webkit-box-orient:vertical;overflow:hidden;}',
-            'body.sv-list .shopify-buy__product__price{grid-column:2;grid-row:2;margin:4px 0 0;',
-              'align-self:start;}',
-            'body.sv-list .shopify-buy__btn-and-quantity{grid-column:3;grid-row:1 / span 2;',
-              'align-self:center;display:flex;align-items:stretch;width:134px;height:40px;',
-              'margin:0;padding:0;}',
-            'body.sv-list .shopify-buy__quantity-container{flex:0 0 34px;margin:0;}',
-            'body.sv-list .shopify-buy__btn-wrapper{flex:1 1 auto;min-width:0;width:auto;margin:0;}',
-            'body.sv-list .shopify-buy__btn{width:100%;min-width:0;margin:0;',
-              'padding-left:4px;padding-right:4px;font-size:12.5px;white-space:nowrap;}',
+            'body.sv-ui .shopify-buy__product__price{grid-column:2;grid-row:3;margin:5px 0 0;}',
+            'body.sv-ui .shopify-buy__product__actual-price{font-family:Inter,sans-serif;font-size:16.5px;',
+              'font-weight:800;letter-spacing:-.02em;color:#7c3aed;}',
+            'body.sv-ui .shopify-buy__product__compare-price{font-family:Inter,sans-serif;font-size:11.5px;',
+              'font-weight:500;color:#b0b0c0;text-decoration:line-through;margin-left:6px;}',
 
-            '.shopify-buy__product__actual-price{font-family:Inter,sans-serif;font-size:18px;',
-              'font-weight:800;letter-spacing:-.025em;color:#002478;}',
-            '.shopify-buy__product__compare-price{font-family:Inter,sans-serif;font-size:12px;',
-              'font-weight:500;color:#8b93a7;text-decoration:line-through;margin-left:6px;}',
+            'body.sv-ui .sv-stock{grid-column:2;grid-row:4;display:flex;align-items:center;gap:5px;',
+              'margin:4px 0 0;font-family:Inter,sans-serif;font-size:11.5px;font-weight:600;',
+              'line-height:1.2;color:#16a34a;}',
+            'body.sv-ui .sv-dot{display:block;width:6px;height:6px;flex:0 0 6px;border-radius:50%;',
+              'background-color:#22c55e;}',
+            'body.sv-ui .sv-stock.is-out{color:#EF4444;}',
+            'body.sv-ui .sv-stock.is-out .sv-dot{background-color:#EF4444;}',
 
-            '.shopify-buy__quantity{display:block;width:100%;height:40px;box-sizing:border-box;',
-              'margin:0;padding:0;line-height:36px;text-align:center;background-color:#ffffff;',
-              'color:#0f1729;font-family:Inter,sans-serif;font-size:13px;font-weight:700;',
-              'border:1.5px solid #e2dcd4;border-right:0;border-radius:12px 0 0 12px;}',
-            '.shopify-buy__btn-wrapper{height:40px;}',
-            '.shopify-buy__quantity-container{height:40px;}',
-            '.shopify-buy__btn.shopify-buy__beside-quantity{display:block;width:100%;height:40px;',
-              'box-sizing:border-box;margin:0;padding-top:0;padding-bottom:0;line-height:38px;',
-              'font-family:Inter,sans-serif;font-size:13.5px;font-weight:700;',
-              'border:0;border-radius:0 12px 12px 0;',
-              'background-image:linear-gradient(180deg,#a06ce8,#8b4bdd);',
-              'box-shadow:0 1px 2px rgba(80,40,150,.18);',
-              'transition:transform .12s cubic-bezier(.4,0,.2,1),filter .18s cubic-bezier(.4,0,.2,1);}',
-            '.shopify-buy__btn.shopify-buy__beside-quantity:hover{filter:brightness(1.06);}',
-            '.shopify-buy__btn.shopify-buy__beside-quantity:active{transform:scale(.97);}',
+            'body.sv-ui .sv-badge{position:absolute;left:-3px;top:-7px;z-index:3;padding:3px 7px;',
+              'font-family:Inter,sans-serif;font-size:8.5px;font-weight:700;line-height:1;',
+              'color:#ffffff;background-color:#7c3aed;border-radius:7px;',
+              'box-shadow:0 2px 5px rgba(124,58,237,.35);white-space:nowrap;}',
 
-            '.sv-oos .shopify-buy__product__variant-img{opacity:.45;filter:grayscale(.5);}',
-            '.sv-oos .shopify-buy__btn.shopify-buy__beside-quantity{background-image:none;',
-              'background-color:#cdd2dc;color:#6b7285;box-shadow:none;',
-              'border:0;border-radius:12px;}',
-            '.sv-oos .shopify-buy__quantity-container{display:none;}',
-            '.sv-badge{position:absolute;left:7px;top:7px;z-index:2;padding:5px 9px;',
-              'font-family:Inter,sans-serif;font-size:9.5px;font-weight:700;line-height:1;',
-              'letter-spacing:.06em;text-transform:uppercase;color:#ffffff;',
-              'background-color:#d92d20;border-radius:999px;',
-              'box-shadow:0 1px 3px rgba(120,20,15,.34);}',
-            'body.sv-list .sv-badge{left:4px;top:4px;padding:4px 6px;font-size:8px;',
-              'letter-spacing:.04em;}',
+            'body.sv-ui .shopify-buy__btn-and-quantity{grid-column:3;grid-row:1 / span 4;align-self:center;',
+              'display:flex;flex-direction:column;align-items:stretch;gap:7px;',
+              'width:104px;margin:0;padding:0;}',
 
-            '.shopify-buy__collection-pagination-button{display:block;width:auto;',
-              'min-width:210px;margin:16px auto 4px;padding:13px 24px;',
-              'background-color:#ffffff;color:#002478;border:1.5px solid #e2dcd4;',
-              'border-radius:14px;font-family:Inter,sans-serif;font-weight:700;font-size:14px;',
-              'box-shadow:0 1px 2px rgba(16,24,40,.04);',
-              'transition:transform .12s cubic-bezier(.4,0,.2,1),background-color .18s cubic-bezier(.4,0,.2,1);}',
-            '.shopify-buy__collection-pagination-button:hover{background-color:#f8f5f0;color:#002478;}',
-            '.shopify-buy__collection-pagination-button:active{transform:scale(.98);}'
+            'body.sv-ui .shopify-buy__product > .shopify-buy__quantity-container{display:none;}',
+            'body.sv-ui .shopify-buy__btn-and-quantity .shopify-buy__quantity-container{display:flex;align-items:center;width:100%;',
+              'height:30px;margin:0;background-color:#ffffff;border:1px solid #e8e8f0;',
+              'border-radius:9px;overflow:hidden;}',
+            'body.sv-ui .shopify-buy__quantity-decrement,',
+            'body.sv-ui .shopify-buy__quantity-increment{position:static;flex:0 0 27px;',
+              'width:27px;height:100%;padding:0;margin:0;border:0;border-radius:0;',
+              'display:flex;align-items:center;justify-content:center;',
+              'background-color:transparent;color:#7c3aed;font-family:Inter,sans-serif;',
+              'font-size:16px;font-weight:700;line-height:1;cursor:pointer;',
+              '-webkit-tap-highlight-color:transparent;}',
+            'body.sv-ui .shopify-buy__quantity-decrement span,',
+            'body.sv-ui .shopify-buy__quantity-increment span{pointer-events:none;}',
+            'body.sv-ui .shopify-buy__quantity-decrement svg,',
+            'body.sv-ui .shopify-buy__quantity-increment svg{display:none;}',
+            'body.sv-ui .shopify-buy__quantity-decrement .visuallyhidden,',
+            'body.sv-ui .shopify-buy__quantity-increment .visuallyhidden{position:absolute;',
+              'width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}',
+            'body.sv-ui .shopify-buy__quantity{flex:1 1 auto;width:100%;height:100%;min-width:0;',
+              'box-sizing:border-box;margin:0;padding:0;border:0;border-radius:0;',
+              'text-align:center;background-color:transparent;color:#1b1464;',
+              'font-family:Inter,sans-serif;font-size:13px;font-weight:700;',
+              '-moz-appearance:textfield;}',
+            'body.sv-ui .shopify-buy__quantity::-webkit-outer-spin-button,',
+            'body.sv-ui .shopify-buy__quantity::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}',
+
+            'body.sv-ui .shopify-buy__btn-wrapper{width:100%;margin:0;}',
+            'body.sv-ui .shopify-buy__btn{display:flex;align-items:center;justify-content:center;gap:5px;',
+              'width:100%;height:32px;box-sizing:border-box;margin:0;padding:0 6px;',
+              'font-family:Inter,sans-serif;font-size:12.5px;font-weight:700;line-height:1;',
+              'letter-spacing:-.01em;color:#ffffff;background-image:none;',
+              'background-color:#7c3aed;border:0;border-radius:9px;box-shadow:none;',
+              'transition:background-color .16s cubic-bezier(.4,0,.2,1);}',
+            'body.sv-ui .shopify-buy__btn:hover,body.sv-ui .shopify-buy__btn:focus{background-color:#6d28d9;}',
+            'body.sv-ui .shopify-buy__btn:active{background-color:#5b21b6;}',
+            'body.sv-ui .shopify-buy__btn svg{width:13px;height:13px;flex:0 0 13px;fill:currentColor;}',
+
+            'body.sv-ui .sv-oos .shopify-buy__product__variant-img{opacity:.5;filter:grayscale(.45);}',
+            'body.sv-ui .sv-oos .shopify-buy__quantity-container{visibility:hidden;}',
+            'body.sv-ui .sv-oos .shopify-buy__btn{background-color:#eceaf6;color:#9a9aae;}',
+            'body.sv-ui .sv-oos .shopify-buy__btn svg{display:none;}',
+            'body.sv-ui .sv-hidden{display:none !important;}',
+
+            'body.sv-ui .shopify-buy__collection-pagination-button{display:block;width:auto;',
+              'width:fit-content;min-width:196px;margin:14px auto 6px;',
+              'background-color:#ffffff;color:#7c3aed;border:1.5px solid #e8e8f0;',
+              'border-radius:12px;font-family:Inter,sans-serif;font-weight:700;font-size:13px;',
+              'box-shadow:none;}',
+            'body.sv-ui .shopify-buy__collection-pagination-button:hover{background-color:#f7f5ff;',
+              'color:#6d28d9;}',
+            'body.sv-ui .sv-empty{padding:46px 20px;text-align:center;font-family:Inter,sans-serif;',
+              'font-size:13px;font-weight:600;color:#9a9aae;}'
           ].join('');
 
-          var viewMode = 'grid';
+          var SVG_NS = 'http://www.w3.org/2000/svg';
+          var CART_PATH = 'M6 6V5a4 4 0 0 1 8 0v1h2.2a1 1 0 0 1 1 1.1l-1 9A2.5 2.5 0 0 1 13.7 18H6.3a2.5 2.5 0 0 1-2.5-2.2l-1-9A1 1 0 0 1 3.8 6H6zm2 0h4V5a2 2 0 1 0-4 0v1z';
+
+          var searchTerm = '';
+          var stockOnly = false;
+          var sortMode = 'default';
+
+          function makeCartIcon(d) {
+            var svg = d.createElementNS(SVG_NS, 'svg');
+            svg.setAttribute('viewBox', '0 0 20 20');
+            svg.setAttribute('aria-hidden', 'true');
+            var path = d.createElementNS(SVG_NS, 'path');
+            path.setAttribute('d', CART_PATH);
+            svg.appendChild(path);
+            return svg;
+          }
 
           function productFrame() {
             return document.querySelector('iframe[name^=frame-productSet]');
           }
 
-          function applyView(mode) {
+          function frameDoc() {
             var f = productFrame();
-            if (!f) { return false; }
+            if (!f) { return null; }
+            try {
+              var d = f.contentDocument;
+              return (d && d.body && d.head) ? d : null;
+            } catch (e) { return null; }
+          }
 
-            var d;
-            try { d = f.contentDocument; } catch (e) { return false; }
-            if (!d || !d.body || !d.head) { return false; }
-
+          function ensureStyles(d) {
             if (!d.getElementById('sv-style')) {
               var st = d.createElement('style');
               st.id = 'sv-style';
               st.textContent = VIEW_CSS;
               d.head.appendChild(st);
             }
-
-            var other = (mode === 'list') ? 'grid' : 'list';
-            if (d.body.classList.contains('sv-' + mode) &&
-                !d.body.classList.contains('sv-' + other)) {
-              return true;
+            if (!d.body.classList.contains('sv-ui')) {
+              d.body.classList.add('sv-ui');
             }
-
-            d.body.classList.remove('sv-grid', 'sv-list');
-            d.body.classList.add('sv-' + mode);
-            return true;
           }
 
-          window.applyStoreView = function (mode) {
-            viewMode = (mode === 'list') ? 'list' : 'grid';
-            applyView(viewMode);
+          window.applyStoreView = function () { return true; };
+
+          window.applyStoreSearch = function (term) {
+            searchTerm = (term || '').toString().trim().toLowerCase();
+            filterProducts();
+          };
+
+          window.applyStoreStockFilter = function (on) {
+            stockOnly = !!on;
+            filterProducts();
+          };
+
+          window.applyStoreSort = function (mode) {
+            sortMode = mode || 'default';
+            sortProducts();
+          };
+
+          function priceOf(card) {
+            var el = card.querySelector('.shopify-buy__product__actual-price');
+            if (!el) { return 0; }
+            var n = parseFloat(el.textContent.replace(/[^0-9.]/g, ''));
+            return isNaN(n) ? 0 : n;
+          }
+
+          function sortProducts() {
+            var d = frameDoc();
+            if (!d) { return; }
+
+            var box = d.querySelector('.shopify-buy__collection-products');
+            if (!box) { return; }
+
+            var ps = [];
+            var kids = box.querySelectorAll('.shopify-buy__product');
+            for (var i = 0; i < kids.length; i++) {
+              if (!kids[i].hasAttribute('data-sv-idx')) {
+                kids[i].setAttribute('data-sv-idx', i);
+              }
+              ps.push(kids[i]);
+            }
+            if (!ps.length) { return; }
+
+            var want = ps.slice();
+            if (sortMode === 'price-asc') {
+              want.sort(function (a, b) { return priceOf(a) - priceOf(b); });
+            } else if (sortMode === 'price-desc') {
+              want.sort(function (a, b) { return priceOf(b) - priceOf(a); });
+            } else {
+              want.sort(function (a, b) {
+                return (+a.getAttribute('data-sv-idx')) - (+b.getAttribute('data-sv-idx'));
+              });
+            }
+
+            var same = true;
+            for (var j = 0; j < want.length; j++) {
+              if (want[j] !== ps[j]) { same = false; break; }
+            }
+            if (same) { return; }
+
+            for (var k = 0; k < want.length; k++) {
+              box.appendChild(want[k]);
+            }
+          }
+
+          function filterProducts() {
+            var d = frameDoc();
+            if (!d) { return; }
+
+            var ps = d.querySelectorAll('.shopify-buy__product');
+            var shown = 0;
+
+            for (var i = 0; i < ps.length; i++) {
+              var card = ps[i];
+              var t = card.querySelector('.shopify-buy__product__title');
+              var name = t ? t.textContent.toLowerCase() : '';
+
+              var okText = !searchTerm || name.indexOf(searchTerm) !== -1;
+              var okStock = !stockOnly || !card.classList.contains('sv-oos');
+
+              if (okText && okStock) {
+                card.classList.remove('sv-hidden');
+                shown++;
+              } else {
+                card.classList.add('sv-hidden');
+              }
+            }
+
+            var wrap = d.querySelector('.shopify-buy__collection');
+            if (wrap) {
+              var msg = d.getElementById('sv-empty');
+              if (shown === 0 && ps.length) {
+                if (!msg) {
+                  msg = d.createElement('div');
+                  msg.id = 'sv-empty';
+                  msg.className = 'sv-empty';
+                  msg.textContent = 'No encontramos productos.';
+                  wrap.appendChild(msg);
+                }
+              } else if (msg) {
+                msg.parentNode.removeChild(msg);
+              }
+            }
+          }
+
+          function unitLabel(name) {
+            var n = (name || '').toLowerCase();
+            if (n.indexOf('pack') !== -1) { return '1 pack'; }
+            if (n.indexOf('pcs') !== -1 || n.indexOf('pza') !== -1) { return '1 paquete'; }
+            if (n.indexOf('kg') !== -1 || n.indexOf(' g') !== -1) { return '1 bolsa'; }
+            return '1 unidad';
+          }
+
+          function decorateProducts() {
+            var d = frameDoc();
+            if (!d) { return; }
+
+            ensureStyles(d);
+
+            var ps = d.querySelectorAll('.shopify-buy__product');
+
+            for (var i = 0; i < ps.length; i++) {
+              var card = ps[i];
+              var btn = card.querySelector('.shopify-buy__btn');
+              var title = card.querySelector('.shopify-buy__product__title');
+              if (!btn || !title) { continue; }
+
+              var label = btn.textContent.trim();
+              var sold = btn.disabled || label === 'Agotado' ||
+                         label === 'Out of stock' || label === 'Unavailable';
+
+              card.classList.toggle('sv-oos', sold);
+
+              if (!btn.querySelector('svg')) {
+                btn.insertBefore(makeCartIcon(d), btn.firstChild);
+              }
+
+              var unit = card.querySelector('.sv-unit');
+              if (!unit) {
+                unit = d.createElement('div');
+                unit.className = 'sv-unit';
+                title.parentNode.insertBefore(unit, title.nextSibling);
+              }
+              var wanted = unitLabel(title.textContent);
+              if (unit.textContent !== wanted) { unit.textContent = wanted; }
+
+              var stock = card.querySelector('.sv-stock');
+              if (!stock) {
+                stock = d.createElement('div');
+                stock.className = 'sv-stock';
+                var dot = d.createElement('i');
+                dot.className = 'sv-dot';
+                var txt = d.createElement('span');
+                txt.className = 'sv-stock-text';
+                stock.appendChild(dot);
+                stock.appendChild(txt);
+                card.appendChild(stock);
+              }
+              var stockText = sold ? 'Sin stock' : 'En stock';
+              var st = stock.querySelector('.sv-stock-text');
+              if (st && st.textContent !== stockText) { st.textContent = stockText; }
+              stock.classList.toggle('is-out', sold);
+
+              var wrap = card.querySelector('.shopify-buy__product-img-wrapper');
+              if (wrap) {
+                var tag = wrap.querySelector('.sv-badge');
+                if (i === 0 && !sold) {
+                  if (!tag) {
+                    tag = d.createElement('span');
+                    tag.className = 'sv-badge';
+                    tag.textContent = 'Más vendido';
+                    wrap.appendChild(tag);
+                  }
+                } else if (tag) {
+                  tag.parentNode.removeChild(tag);
+                }
+              }
+
+            }
+
+            filterProducts();
+          }
+
+          window.readCartState = function () {
+            var out = { count: 0, total: '', open: false };
+            try {
+              var tf = document.querySelector('iframe[name=frame-toggle]');
+              if (tf && tf.contentDocument) {
+                var c = tf.contentDocument.querySelector('.shopify-buy__cart-toggle__count');
+                if (c) { out.count = parseInt(c.textContent, 10) || 0; }
+              }
+              var cf = document.querySelector('iframe[name=frame-cart]');
+              if (cf && cf.contentDocument) {
+                var pz = cf.contentDocument.querySelector('.shopify-buy__cart__subtotal__price');
+                if (pz) { out.total = pz.textContent.trim(); }
+
+                var host = cf.parentNode;
+                if (host) {
+                  var r = host.getBoundingClientRect();
+                  out.open = r.width > 0 && r.left < (window.innerWidth - 12);
+                }
+              }
+            } catch (e) {}
+            return out;
+          };
+
+          window.openStoreCart = function () {
+            try {
+              var tf = document.querySelector('iframe[name=frame-toggle]');
+              if (tf && tf.contentDocument) {
+                var b = tf.contentDocument.querySelector('.shopify-buy__cart-toggle');
+                if (b) { b.click(); return true; }
+              }
+            } catch (e) {}
+            return false;
           };
 
           function syncFrameHeight() {
             var f = productFrame();
-            if (!f) { return; }
-
-            var d;
-            try { d = f.contentDocument; } catch (e) { return; }
-            if (!d || !d.body) { return; }
+            var d = frameDoc();
+            if (!f || !d) { return; }
 
             var root = d.querySelector('.shopify-buy__collection');
             if (!root) { return; }
@@ -743,68 +1039,23 @@
             real = Math.ceil(real);
 
             var shown = parseFloat(f.style.height) || 0;
-
             if (real > 0 && Math.abs(real - shown) > 2) {
               f.style.height = real + 'px';
             }
           }
 
-          function decorateProducts() {
-            var f = productFrame();
-            if (!f) { return; }
-
-            var d;
-            try { d = f.contentDocument; } catch (e) { return; }
-            if (!d) { return; }
-
-            var ps = d.querySelectorAll('.shopify-buy__product');
-
-            for (var i = 0; i < ps.length; i++) {
-              var card = ps[i];
-              var btn = card.querySelector('.shopify-buy__btn');
-              if (!btn) { continue; }
-
-              var label = btn.textContent.trim();
-              var sold = btn.disabled ||
-                         label === 'Out of stock' || label === 'Unavailable' ||
-                         label === 'Agotado' || label === 'No disponible';
-
-              if (sold) {
-                card.classList.add('sv-oos');
-
-                var wrap = card.querySelector('.shopify-buy__product-img-wrapper');
-                if (wrap && !wrap.querySelector('.sv-badge')) {
-                  var tag = d.createElement('span');
-                  tag.className = 'sv-badge';
-                  tag.textContent = 'Stock out';
-                  wrap.appendChild(tag);
-                }
-              } else {
-                card.classList.remove('sv-oos');
-
-                var old = card.querySelector('.sv-badge');
-                if (old) { old.parentNode.removeChild(old); }
-              }
-            }
-          }
-
           function localisePagination() {
-            var f = productFrame();
-            if (!f) { return; }
-
-            var d;
-            try { d = f.contentDocument; } catch (e) { return; }
+            var d = frameDoc();
             if (!d) { return; }
-
             var b = d.querySelector('.shopify-buy__collection-pagination-button');
-            if (b && b.textContent.trim() !== 'Next Page') {
-              b.textContent = 'Next Page';
+            if (b && b.textContent.trim() !== 'Ver más productos') {
+              b.textContent = 'Ver más productos';
             }
           }
 
           setInterval(function () {
-            applyView(viewMode);
             decorateProducts();
+            sortProducts();
             localisePagination();
             syncFrameHeight();
           }, 400);
