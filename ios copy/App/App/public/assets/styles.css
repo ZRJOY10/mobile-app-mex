@@ -1,3 +1,49 @@
+:root {
+  --brand-navy:        #002478;
+  --brand-navy-tint:   #eaeefb;
+  --brand-purple:      #9b5de5;
+  --brand-purple-600:  #8247d1;
+  --brand-purple-700:  #6d38b8;
+  --brand-purple-tint: #f4ecff;
+
+  --surface-app:    #faf8f5;
+  --surface-card:   #ffffff;
+  --surface-sunken: #f3efe9;
+
+  --text-strong:   #0f1729;
+  --text-body:     #47506a;
+  --text-muted:    #8b93a7;
+  --text-on-brand: #ffffff;
+
+  --line:        #ece7e1;
+  --line-strong: #d9d2c9;
+
+  --r-sm:   10px;
+  --r-md:   14px;
+  --r-lg:   18px;
+  --r-xl:   24px;
+  --r-pill: 999px;
+
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, .04),
+               0 1px 3px rgba(16, 24, 40, .06);
+  --shadow-md: 0 2px 4px rgba(16, 24, 40, .04),
+               0 6px 16px rgba(16, 24, 40, .07);
+  --shadow-lg: 0 8px 24px rgba(16, 24, 40, .10),
+               0 2px 6px rgba(16, 24, 40, .05);
+
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --ease: cubic-bezier(.4, 0, .2, 1);
+}
+
 /* ==========================================================================
    RESET & GLOBAL BOX MODEL
    ========================================================================== */
@@ -263,7 +309,6 @@ button:active {
   transform: scale(0.97);
 }
 
-
 .iframe-container {
   width: 100%;
   height: 100%;
@@ -287,16 +332,14 @@ button:active {
   background: transparent;
 }
 
-
 #page-compras {
   position: relative;
   width: 100%;
-  height: calc(100% - 0px);
+  height: calc(100% - 10px);
   padding-top: 90px;
   box-sizing: border-box;
   overflow: hidden;
 }
-
 
 /* Full overlay loader covering iframe */
 .iframe-loader {
@@ -389,8 +432,6 @@ button:active {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-
 
 /* Container with dedicated internal scroll bar */
 #transaction-history-container {
@@ -588,7 +629,6 @@ button:active {
   margin: 0;
   font-size: 13px;
 }
-
 
 /* Base Styles & Reset */
 * {
