@@ -1,7 +1,7 @@
 .phone:has(#page-compras.active) .header {
-  height: 124px;
-  min-height: 124px;
-  max-height: 124px;
+  height: 170px;
+  min-height: 170px;
+  max-height: 170px;
 }
 
 .phone:has(#page-compras.active) .logo {
@@ -9,13 +9,20 @@
 }
 
 .phone:has(#page-compras.active) .logo img {
-  height: 150px;
+  height: 160px;
   max-width: 70%;
 }
 
 .header,
 .logo img {
-  transition: height .3s var(--ease);
+  transition: height .28s var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .logo img {
+    transition: none;
+  }
 }
 
 .content:has(#page-compras.active) {
