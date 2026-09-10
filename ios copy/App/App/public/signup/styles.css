@@ -1,0 +1,121 @@
+/* CLAIM POINTS ONLY */
+
+
+/* main card */
+
+.claim-card{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:28px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+
+.claim-card h1{
+
+    text-align:center;
+
+    color:var(--navy);
+
+    font-size:28px;
+
+    font-weight:800;
+
+}
+
+
+
+
+/* points box */
+
+.points{
+
+    margin:20px 0;
+
+    padding:20px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    color:white;
+
+    font-weight:700;
+
+    background:
+    linear-gradient(
+        135deg,
+        #F9C74F,
+        #9B5DE5,
+        #6B3F2A
+    );
+
+}
+
+
+
+
+.points span{
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:48px;
+
+    font-weight:800;
+
+}
+
+
+
+
+/* inputs */
+
+.claim-card input{
+
+    width:100%;
+
+    height:58px;
+
+    margin-top:12px;
+
+    padding:0 18px;
+
+    border-radius:16px;
+
+    border:2px solid #eee;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+
+
+
+.claim-card input:focus{
+
+    border-color:#9B5DE5;
+
+}
+
+
+
+
+/* button uses global button styling */
+
+.claim-card button{
+
+    margin-top:22px;
+
+}

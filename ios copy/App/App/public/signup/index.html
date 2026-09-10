@@ -1,0 +1,113 @@
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Claim Points</title>
+
+
+    <!-- GLOBAL -->
+    <link rel="icon" href="../assets/icons/icon-96.webp">
+
+    <link rel="stylesheet" href="../assets/styles.css">
+
+
+    <!-- PAGE ONLY -->
+    <link rel="stylesheet" href="styles.css">
+
+
+    </head>
+
+
+    <body>
+
+
+    <div class="phone">
+
+
+        <div class="header">
+
+
+            <div class="logo">
+
+                <img src="../assets/logo.png" alt="La Bodegita">
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="content">
+
+
+
+            <div class="claim-card">
+
+
+                <h1>
+                    Crea su Cuenta
+                </h1>
+
+
+
+                <input
+                id="name"
+                placeholder="Nombre completo">
+
+
+
+
+
+                <input
+                id="address"
+                placeholder="Dirección">
+
+
+
+
+
+                <input
+                id="pin"
+                type="password"
+                placeholder="Crea un PIN de 4-6 dígitos"
+                maxlength="6">
+
+
+
+
+
+                <button onclick="claim()">
+
+                    Crear cuenta
+
+                </button>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <!-- COMMON JAVASCRIPT (storage shim) - must load first -->
+    <script src="../assets/common.js"></script>
+
+    <script src="app.js"></script>
+
+
+    </body>
+
+    </html>

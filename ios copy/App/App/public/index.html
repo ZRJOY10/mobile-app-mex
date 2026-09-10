@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La Bodegita</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="icon" href="assets/icons/icon-96.webp">
+
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="phone">
+
+        <!-- HEADER -->
+        <div class="header">
+
+            <div class="logo">
+                <img src="assets/logo.png" alt="La Bodegita">
+            </div>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+        <div class="login-form">
+
+            <!-- PHONE INPUT -->
+            <div class="input" id="loginInputBox">
+
+                <label id="loginLabel"> 
+                    Bienvenidos a
+                    <br>
+                    La Bodeguita
+                </label>
+
+                <span class="small-gap"></span>
+
+                <span class="phone-label">Número de teléfono</span>
+
+                <span class="small-gap3"></span>
+
+
+                <input
+                    id="phone"
+                    type="tel"
+                    placeholder="(555) 123-4567"
+                >
+
+            </div>
+
+
+            <!-- TOS & PRIVACY CHECKBOXES -->
+            <div class="tos-container">
+
+                <label class="tos-item">
+
+                    <input
+                        type="checkbox"
+                        id="tos-terms"
+                        onchange="validateCheckboxes()"
+                    >
+
+                    <span>
+                        Acepto los
+                        <a
+                            href="https://la-bodeguita-llc.myshopify.com/pages/termos"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Términos de Servicio
+                        </a>.
+                    </span>
+
+                </label>
+
+
+                <label class="tos-item">
+
+                    <input
+                        type="checkbox"
+                        id="tos-privacy"
+                        onchange="validateCheckboxes()"
+                    >
+
+                    <span>
+                        Acepto la
+                        <a
+                            href="https://la-bodeguita-llc.myshopify.com/pages/privacidad"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Política de Privacidad
+                        </a>.
+                    </span>
+
+                </label>
+
+            </div>
+
+            <span class="small-gap2"></span>
+
+
+            <!-- LOGIN BUTTON -->
+            <button
+                id="loginBtn"
+                class="login"
+                onclick="login()"
+                disabled
+            >
+                Iniciar sesión
+            </button>
+
+
+        </div>
+
+
+
+
+    <div class="footer">
+
+    </div>
+
+
+    <!-- COMMON JAVASCRIPT -->
+    <script src="assets/common.js"></script>
+
+    <!-- LOGIN JAVASCRIPT -->
+    <script type="module" src="login.js"></script>
+
+
+    <!-- CHECKBOX + PHONE FORMATTING -->
+    <script>
+        (function () {
+
+            function validateCheckboxes() {
+                const termsChecked =
+                    document.getElementById("tos-terms").checked;
+
+                const privacyChecked =
+                    document.getElementById("tos-privacy").checked;
+
+                const loginBtn =
+                    document.getElementById("loginBtn");
+
+                if (loginBtn) {
+                    loginBtn.disabled =
+                        !(termsChecked && privacyChecked);
+                }
+            }
+
+            // Make function available to inline onchange handlers
+            window.validateCheckboxes = validateCheckboxes;
+
+
+            // Phone number formatting
+            const phoneInput =
+                document.getElementById("phone");
+
+            if (phoneInput) {
+
+                phoneInput.addEventListener("input", function () {
+
+                    let numbers =
+                        this.value.replace(/\D/g, "");
+
+                    if (numbers.length > 10) {
+                        numbers = numbers.slice(0, 10);
+                    }
+
+                    let formatted = numbers;
+
+                    if (numbers.length > 6) {
+
+                        formatted =
+                            "(" +
+                            numbers.slice(0, 3) +
+                            ") " +
+                            numbers.slice(3, 6) +
+                            "-" +
+                            numbers.slice(6);
+
+                    } else if (numbers.length > 3) {
+
+                        formatted =
+                            "(" +
+                            numbers.slice(0, 3) +
+                            ") " +
+                            numbers.slice(3);
+
+                    } else if (numbers.length > 0) {
+
+                        formatted =
+                            "(" +
+                            numbers;
+
+                    }
+
+                    this.value = formatted;
+
+                });
+
+            }
+
+        })();
+    </script>
+
+</body>
+
+
+
+</html>

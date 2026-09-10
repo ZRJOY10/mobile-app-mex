@@ -1,0 +1,14 @@
+{
+	"appId": "com.labodeguita.app",
+	"appName": "La Bodeguita",
+	"webDir": "www",
+	"plugins": {
+		"StatusBar": {
+			"overlaysWebView": true,
+			"style": "LIGHT"
+		}
+	},
+	"packageClassList": [
+		"PreferencesPlugin"
+	]
+}

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bodegita Rewards</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- GLOBAL STYLES -->
+    <link rel="icon" href="../assets/icons/icon-96.webp">
+
+    <link rel="stylesheet" href="../assets/styles.css">
+
+    <!-- HOME STYLES -->
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+<div class="phone">
+
+    <!-- GLOBAL HEADER -->
+    <div class="header">
+        <div class="logo">
+            <img src="../assets/logo.png" alt="La Bodegita">
+        </div>
+    </div>
+
+    <!-- MAIN SCROLLABLE CONTENT AREA -->
+    <main class="content">
+
+        <!-- PANEL 1: INICIO -->
+        <div id="page-inicio" class="page-view active">
+            <div id="inicio-loader" class="page-loader">
+                <div class="compras-spinner"></div>
+                <p id="inicio-loader-text" class="loader-text">Cargando...</p>
+            </div>
+
+            <div class="greeting">
+                Hola, <span id="customerName"></span>
+            </div>
+
+            <div class="welcome-text">
+                Bienvenido a tus Recompensas en La Bodeguita
+            </div>
+<!-- Inside your Inicio view/section -->
+<div id="inicio-wallet-card" class="wallet-header-card tier-none">
+    <div class="tier-badge">SIN NIVEL</div>
+    <div class="tier-discount-title">Sin cupones disponibles</div>
+    <div class="tier-sub-info">Acumula más puntos para desbloquear tu primer descuento.</div>
+    <button class="btn-tier-action" onclick="handleHeaderRedeemClick()">Canjear Descuento</button>
+</div>
+            
+            <!-- HISTORIAL DE ACTIVIDAD -->
+            <div class="section-title">Actividad reciente</div>
+            <div id="transaction-history-container" class="history-list">
+                <!-- Activity Cards populated by rewards-widget.js -->
+            </div>
+        </div>
+
+
+        
+
+
+<!-- PAGE 2: PREMIOS -->
+
+
+
+
+
+<div id="page-premios" class="page-view">
+
+            <!-- Page Loading Overlay -->
+            <div id="premios-loader" class="page-loader" style="display: none;">
+                <div class="compras-spinner"></div>
+                <p id="premios-loader-text" class="loader-text">Cargando...</p>
+            </div>
+
+<div class="greeting" style="text-align: center;">Premios</div>
+
+            <!-- WALLET & REWARDS CONTAINER -->
+            <div class="wallet-container">
+
+                <!-- SECTION 1: Automatic Base Tier Discount -->
+                <div class="rewards-section">
+                    <div id="wallet-header-card" class="wallet-header-card tier-none">
+                        <span id="tier-badge" class="tier-badge">Cargando Nivel...</span>
+                        <div id="user-discount-tier" class="tier-discount-title">$0 Crédito</div>
+                        
+                        <div id="tier-sub-info" class="tier-sub-info">
+                            Cargando información...
+                        </div>
+
+                        <!-- Direct redeem button for tier discount (No points deducted) -->
+                        <button id="btn-tier-redeem" class="btn-tier-action" onclick="handleHeaderRedeemClick()">
+                            Usar en Caja Ahora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Single-Order Constraint Disclaimer -->
+                <p class="order-disclaimer">* Solo se puede aplicar 1 cupón por pedido en caja.</p>
+
+                <!-- SECTION 2: Extra Available Perks (Single Streamlined List) -->
+                <div class="rewards-section">
+<div class="section-title" style="text-align: center;">Coupones Disponibles</div>                    
+                    <div id="rewards-list-container" class="cards-list">
+                        <!-- Dynamically populated by rewards-view.js -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+<!-- PANEL 3: COMPRAS -->
+<div id="page-compras" class="page-view">
+  <div class="section-title" style="text-align: center; font-size: 28px; margin-bottom: 20px;">Comprar</div>
+  
+  <div id="compras-loader" class="iframe-loader">
+    <div class="spinner"></div>
+    <p id="compras-loader-text">Cargando tienda...</p>
+  </div>
+<iframe 
+    id="shopify-frame"
+    style="
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        border: none;
+        display: block;
+    "
+    srcdoc="
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+        <style>
+          html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            background: transparent;
+            overflow-y: auto !important;
+            touch-action: pan-y !important;
+            -webkit-overflow-scrolling: touch;
+            box-sizing: border-box;
+          }
+
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <div id='collection-component-1786610060165'></div>
+
+        <script type='text/javascript'>
+        /*<![CDATA[*/
+        (function () {
+
+          var scriptURL =
+            'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+
+          if (window.ShopifyBuy) {
+            if (window.ShopifyBuy.UI) {
+              ShopifyBuyInit();
+            } else {
+              loadScript();
+            }
+          } else {
+            loadScript();
+          }
+
+          function loadScript() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = scriptURL;
+
+            (document.getElementsByTagName('head')[0] ||
+             document.getElementsByTagName('body')[0])
+              .appendChild(script);
+
+            script.onload = ShopifyBuyInit;
+          }
+
+          function ShopifyBuyInit() {
+
+            var client = ShopifyBuy.buildClient({
+              domain: 'la-bodeguita-llc.myshopify.com',
+              storefrontAccessToken: 'c9df97af6e51a6e02feea03f399ebb46',
+            });
+
+            ShopifyBuy.UI.onReady(client).then(function (ui) {
+
+              ui.createComponent('collection', {
+
+                id: '529889296698',
+
+                node: document.getElementById(
+                  'collection-component-1786610060165'
+                ),
+
+                moneyFormat: '%24%7B%7Bamount%7D%7D',
+
+                options: {
+
+                  product: {
+
+                    styles: {
+
+                      product: {
+
+                        '@media (min-width: 601px)': {
+                          'max-width': 'calc(25% - 20px)',
+                          'margin-left': '20px',
+                          'margin-bottom': '50px',
+                          'width': 'calc(25% - 20px)'
+                        },
+
+                        'img': {
+                          'height': 'calc(100% - 15px)',
+                          'position': 'absolute',
+                          'left': '0',
+                          'right': '0',
+                          'top': '0'
+                        },
+
+                        'imgWrapper': {
+                          'padding-top': 'calc(75% + 15px)',
+                          'position': 'relative',
+                          'height': '0'
+                        }
+                      },
+
+                      title: {
+                        'font-family': 'Josefin Slab, sans-serif',
+                        'color': '#002478'
+                      },
+
+                      button: {
+                        'font-family': 'Roboto, sans-serif',
+                        ':hover': {
+                          'background-color': '#8c54ce'
+                        },
+                        'background-color': '#9b5de5',
+                        ':focus': {
+                          'background-color': '#8c54ce'
+                        },
+                        'border-radius': '22px',
+                        'padding-left': '68px',
+                        'padding-right': '68px'
+                      },
+
+                      price: {
+                        'color': '#002478'
+                      },
+
+                      compareAt: {
+                        'color': '#002478'
+                      },
+
+                      unitPrice: {
+                        'color': '#002478'
+                      }
+                    },
+
+                    contents: {
+                      button: false,
+                      buttonWithQuantity: true
+                    },
+
+                    text: {
+                      button: 'Add to cart'
+                    },
+
+                    googleFonts: [
+                      'Josefin Slab',
+                      'Roboto'
+                    ]
+                  },
+
+                  productSet: {
+                    styles: {
+                      products: {
+                        '@media (min-width: 601px)': {
+                          'margin-left': '-20px'
+                        }
+                      }
+                    }
+                  },
+
+                  modalProduct: {
+
+                    contents: {
+                      img: false,
+                      imgWithCarousel: true,
+                      button: false,
+                      buttonWithQuantity: true
+                    },
+
+                    styles: {
+
+                      product: {
+                        '@media (min-width: 601px)': {
+                          'max-width': '100%',
+                          'margin-left': '0px',
+                          'margin-bottom': '0px'
+                        }
+                      },
+
+                      button: {
+                        'font-family': 'Roboto, sans-serif',
+                        ':hover': {
+                          'background-color': '#8c54ce'
+                        },
+                        'background-color': '#9b5de5',
+                        ':focus': {
+                          'background-color': '#8c54ce'
+                        },
+                        'border-radius': '22px',
+                        'padding-left': '68px',
+                        'padding-right': '68px'
+                      },
+
+                      title: {
+                        'font-family': 'Helvetica Neue, sans-serif',
+                        'font-weight': 'bold',
+                        'font-size': '26px',
+                        'color': '#4c4c4c'
+                      },
+
+                      price: {
+                        'font-family': 'Helvetica Neue, sans-serif',
+                        'font-weight': 'normal',
+                        'font-size': '18px',
+                        'color': '#4c4c4c'
+                      },
+
+                      compareAt: {
+                        'font-family': 'Helvetica Neue, sans-serif',
+                        'font-weight': 'normal',
+                        'font-size': '15.3px',
+                        'color': '#4c4c4c'
+                      },
+
+                      unitPrice: {
+                        'font-family': 'Helvetica Neue, sans-serif',
+                        'font-weight': 'normal',
+                        'font-size': '15.3px',
+                        'color': '#4c4c4c'
+                      }
+                    },
+
+                    googleFonts: [
+                      'Roboto'
+                    ],
+
+                    text: {
+                      button: 'Add to cart'
+                    }
+                  },
+
+                  option: {},
+
+                  cart: {
+
+                    styles: {
+
+                      button: {
+                        'font-family': 'Roboto, sans-serif',
+                        ':hover': {
+                          'background-color': '#8c54ce'
+                        },
+                        'background-color': '#9b5de5',
+                        ':focus': {
+                          'background-color': '#8c54ce'
+                        },
+                        'border-radius': '22px'
+                      }
+
+                    },
+
+                    text: {
+                      total: 'Subtotal',
+                      button: 'Checkout'
+                    },
+
+                    googleFonts: [
+                      'Roboto'
+                    ]
+                  },
+
+                  toggle: {
+
+                    styles: {
+
+                      toggle: {
+                        'font-family': 'Roboto, sans-serif',
+                        'background-color': '#9b5de5',
+
+                        ':hover': {
+                          'background-color': '#8c54ce'
+                        },
+
+                        ':focus': {
+                          'background-color': '#8c54ce'
+                        }
+                      }
+
+                    },
+
+                    googleFonts: [
+                      'Roboto'
+                    ]
+                  }
+
+                }
+
+              });
+
+            });
+
+          }
+
+        })();
+        /*]]>*/
+        </script>
+
+      </body>
+      </html>
+    ">
+</iframe><iframe 
+    id="shopify-frame"
+    style="
+        width: 100%;
+        height: calc(100% - 90px);
+        min-height: 0;
+        border: none;
+        display: block;
+    "
+    srcdoc="
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+        <style>
+          html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            background: transparent;
+            overflow-y: auto !important;
+            touch-action: pan-y !important;
+            -webkit-overflow-scrolling: touch;
+            box-sizing: border-box;
+          }
+
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <div id='collection-component-1786610060165'></div>
+
+        <script type='text/javascript'>
+        /*<![CDATA[*/
+        (function () {
+
+          var scriptURL =
+            'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+
+          if (window.ShopifyBuy) {
+            if (window.ShopifyBuy.UI) {
+              ShopifyBuyInit();
+            } else {
+              loadScript();
+            }
+          } else {
+            loadScript();
+          }
+
+          function loadScript() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = scriptURL;
+
+            (document.getElementsByTagName('head')[0] ||
+             document.getElementsByTagName('body')[0])
+              .appendChild(script);
+
+            script.onload = ShopifyBuyInit;
+          }
+
+          function ShopifyBuyInit() {
+
+            var client = ShopifyBuy.buildClient({
+              domain: 'la-bodeguita-llc.myshopify.com',
+              storefrontAccessToken: 'c9df97af6e51a6e02feea03f399ebb46',
+            });
+
+            ShopifyBuy.UI.onReady(client).then(function (ui) {
+
+              ui.createComponent('collection', {
+
+                id: '529889296698',
+
+                node: document.getElementById(
+                  'collection-component-1786610060165'
+                ),
+
+                moneyFormat: '%24%7B%7Bamount%7D%7D',
+
+                options: {
+
+                  product: {
+
+                    styles: {
+
+                      product: {
+
+                        '@media (min-width: 601px)': {
+                          'max-width': 'calc(25% - 20px)',
+                          'margin-left': '20px',
+                          'margin-bottom': '50px',
+                          'width': 'calc(25% - 20px)'
+                        },
+
+                        'img': {
+                          'height': 'calc(100% - 15px)',
+                          'position': 'absolute',
+                          'left': '0',
+                          'right': '0',
+                          'top': '0'
+                        },
+
+                        'imgWrapper': {
+                          'padding-top': 'calc(75% + 15px)',
+                          'position': 'relative',
+                          'height': '0'
+                        }
+                      },
+
+                      title: {
+                        'font-family': 'Josefin Slab, sans-serif',
+                        'color': '#002478'
+                      },
+
+                      button: {
+                        'font-family': 'Roboto, sans-serif',
+                        ':hover': {
+                          'background-color': '#8c54ce'
+                        },
+                        'background-color': '#9b5de5',
+                        ':focus': {
+                          'background-color': '#8c54ce'
+                        },
+                        'border-radius': '22px',
+                        'padding-left': '68px',
+                        'padding-right': '68px'
+                      },
+
+                      price: {
+                        'color': '#002478'
+                      },
+
+                      compareAt: {
+                        'color': '#002478'
+                      },
+
+                      unitPrice: {
+                        'color': '#002478'
+                      }
+                    },
+
+                    contents: {
+                      button: false,
+                      buttonWithQuantity: true
+                    },
+
+                    text: {
+                      button: 'Add to cart'
+                    },
+
+                    googleFonts: [
+                      'Josefin Slab',
+                      'Roboto'
+                    ]
+                  },
+
+                  productSet: {
+                    styles: {
+                      products: {
+                        '@media (min-width: 601px)': {
+                          'margin-left': '-20px'
+                        }
+                      }
+                    }
+                  },
+
+                  modalProduct: {
+
+                    contents: {
+                      img: false,
+                      imgWithCarousel: true,
+                      button: false,
+                      buttonWithQuantity: true
+                    },
+
+                    styles: {
+
+                      product: {
+                        '@media (min-width: 601px)': {
+                          'max-width': '100%',
+                          'margin-left': '0px',
+                          'margin-bottom': '0px'
+                        }
+                      },
+
+                      button: {
+                        'font-family': 'Roboto, sans-serif',
+                        ':hover': {
+                          'background-color': '#8c54ce'
+                        },
+                        'background-color': '#9b5de5',
+                        ':focus': {
+                          'background-color': '#8c54ce'
+                        },
+                        'border-radius': '22px',
+                        'padding-left': '68px',
+                        'padding-right': '68px'
+                      },
+
+                      title: {
+                        'font-family': 'Helvetica Neue, sans-serif',
+                        'font-weight': 'bold',
+                        'font-size': '26px',
+                        'color': '#4c4c4c'
+                      },
+
+                      price: {
+                        'font-family': 'Helvetica Neue, sans-serif',
+                        'font-weight': 'normal',
+                        'font-size': '18px',
+                        'color': '#4c4c4c'
+                      },
+
+                      compareAt: {
+                        'font-family': 'Helvetica Neue, sans-serif',
+                        'font-weight': 'normal',
+                        'font-size': '15.3px',
+                        'color': '#4c4c4c'
+                      },
+
+                      unitPrice: {
+                        'font-family': 'Helvetica Neue, sans-serif',
+                        'font-weight': 'normal',
+                        'font-size': '15.3px',
+                        'color': '#4c4c4c'
+                      }
+                    },
+
+                    googleFonts: [
+                      'Roboto'
+                    ],
+
+                    text: {
+                      button: 'Add to cart'
+                    }
+                  },
+
+                  option: {},
+
+                  cart: {
+
+                    styles: {
+
+                      button: {
+                        'font-family': 'Roboto, sans-serif',
+                        ':hover': {
+                          'background-color': '#8c54ce'
+                        },
+                        'background-color': '#9b5de5',
+                        ':focus': {
+                          'background-color': '#8c54ce'
+                        },
+                        'border-radius': '22px'
+                      }
+
+                    },
+
+                    text: {
+                      total: 'Subtotal',
+                      button: 'Checkout'
+                    },
+
+                    googleFonts: [
+                      'Roboto'
+                    ]
+                  },
+
+                  toggle: {
+
+                    styles: {
+
+                      toggle: {
+                        'font-family': 'Roboto, sans-serif',
+                        'background-color': '#9b5de5',
+
+                        ':hover': {
+                          'background-color': '#8c54ce'
+                        },
+
+                        ':focus': {
+                          'background-color': '#8c54ce'
+                        }
+                      }
+
+                    },
+
+                    googleFonts: [
+                      'Roboto'
+                    ]
+                  }
+
+                }
+
+              });
+
+            });
+
+          }
+
+        })();
+        /*]]>*/
+        </script>
+
+      </body>
+      </html>
+    ">
+</iframe>
+</div>
+
+<!-- PANEL 4: CUENTA -->
+<div id="page-cuenta" class="page-view">
+<div class="greeting" style="text-align: center;">Cuenta</div>
+    <div style="padding: 24px 16px; text-align: center;">
+        <p style="margin-bottom: 24px; color: #666; font-size: 15px;">
+            Aquí puedes eliminar permanentemente tu cuenta y todos los datos asociados.
+        </p>
+
+        <button 
+            class="btn-tier-action" 
+            style="background-color: #e53935; width: 100%; max-width: 280px;"
+            onclick="deleteAccount()">
+            Eliminar cuenta
+        </button>
+    </div>
+</div>
+
+
+
+
+    </main>
+<!-- GLOBAL BOTTOM NAVIGATION -->
+<nav class="nav">
+    <button class="nav-btn active" data-tab="page-inicio">
+        <img src="inicio.png" alt="Inicio" class="nav-icon">
+        <span>Inicio</span>
+    </button>
+    <button class="nav-btn" data-tab="page-premios" onclick="if(window.loadRewardsView) window.loadRewardsView();">
+        <img src="premios.png" alt="Premios" class="nav-icon">
+        <span>Premios</span>
+    </button>
+    <button class="nav-btn" data-tab="page-compras">
+        <img src="compras.png" alt="Comprar" class="nav-icon">
+        <span>Comprar</span>
+    </button>
+    <button class="nav-btn" data-tab="page-cuenta">
+        <img src="cuenta.png" alt="Cuenta" class="nav-icon">
+        <span>Cuenta</span>
+    </button>
+</nav>
+
+</div>
+
+<!-- FULLSCREEN QR CODE MODAL OVERLAY -->
+<div id="qr-modal" class="qr-modal-overlay hidden">
+    <div class="qr-modal-card">
+      <button class="qr-close-btn" onclick="closeQrModal()">&times;</button>
+      <div class="qr-header">
+        <h3>Escanea en Caja</h3>
+        <p>Muestra este código al cajero para aplicar tu descuento</p>
+      </div>
+
+      <div class="qr-image-wrapper">
+        <img id="modal-qr-image" src="" alt="Código QR de Descuento" />
+      </div>
+
+      <div class="qr-code-text-wrapper">
+        <span class="qr-code-label">Código:</span>
+        <span id="modal-qr-code-text" class="qr-code-str">--------</span>
+      </div>
+
+      <button class="qr-action-btn" onclick="closeQrModal()">Guardar en Mi Billetera</button>
+    </div>
+</div>
+
+<!-- SCRIPT IMPORTS -->
+<!-- COMMON JAVASCRIPT (storage shim) - must load first -->
+<script src="../assets/common.js"></script>
+
+<script src="rewards-widget.js"></script>
+<script src="rewards-view.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

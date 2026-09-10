@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>La Bodegita</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../assets/styles.css">
+
+<link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="phone">
+
+
+
+    <div class="header">
+
+
+        <div class="logo">
+
+            <img src="../assets/logo.png" alt="La Bodegita">
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="content">
+
+
+
+        <div class="title">
+
+            Hola 👋
+
+        </div>
+
+
+
+
+
+        <div class="subtitle">
+
+            Ingresa tu número de teléfono para iniciar sesión o crear una cuenta nueva.
+
+            <br><br>
+
+            Enter your phone number to log in or create a new account.
+
+            <br><br>
+
+            Discounts await you!
+
+        </div>
+
+
+
+
+
+
+        <div class="login-form">
+
+
+
+
+
+            <div class="input" id="loginInputBox">
+
+
+
+                <label id="loginLabel">
+
+                    Número de teléfono
+
+                </label>
+
+
+
+
+                <input
+
+                id="phone"
+
+                type="tel"
+
+                placeholder="(555) 123-4567">
+
+
+
+            </div>
+
+
+
+
+
+
+            <button
+
+            class="login"
+
+            onclick="login()">
+
+
+                Iniciar sesión
+
+
+            </button>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+        <div class="footer">
+
+            La Bodegita Rewards
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<script src="../assets/common.js"></script>
+
+<script src="login.js"></script>
+
+
+
+
+
+<script>
+
+
+const phoneInput = document.getElementById("phone");
+
+
+
+phoneInput.addEventListener("input", function(){
+
+
+    let numbers = this.value.replace(/\D/g, "");
+
+
+
+    if(numbers.length > 10){
+
+        numbers = numbers.slice(0,10);
+
+    }
+
+
+
+
+    let formatted = numbers;
+
+
+
+
+    if(numbers.length > 6){
+
+
+        formatted =
+        "(" + numbers.slice(0,3) + ") " +
+        numbers.slice(3,6) + "-" +
+        numbers.slice(6);
+
+
+    }
+
+    else if(numbers.length > 3){
+
+
+        formatted =
+        "(" + numbers.slice(0,3) + ") " +
+        numbers.slice(3);
+
+
+    }
+
+    else if(numbers.length > 0){
+
+
+        formatted =
+        "(" + numbers;
+
+
+    }
+
+
+
+    this.value = formatted;
+
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+
+
+</html>
